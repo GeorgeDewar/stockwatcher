@@ -1,10 +1,28 @@
-<h1>Hello</h1>
+<h1>Stocks I'm watching</h1>
 
-<p>...</p>
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Threshold</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
 
-<p>Your watches</p>
+  <tbody>
+    <% @watches.each do |watch| %>
+      <tr>
+      	<td><%= watch.code %></td>
+      	<td><%= watch.threshold %></td>
+        <td><%= link_to 'Edit', edit_watch_path(watch) %></td>
+        <td><%= link_to 'Remove', watch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<% @watches.each do |watch| %>
-  <%= watch.code %>
+<br>
 
-<%end%>
+<%= link_to 'Watch another stock', new_watch_path, class: "btn btn-primary" %>
