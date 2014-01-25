@@ -1,5 +1,6 @@
 class WatchesController < ApplicationController
   before_action :set_watch, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /watches
   def index
@@ -12,11 +13,13 @@ class WatchesController < ApplicationController
 
   # GET /watches/new
   def new
+  	@stocks = Stock.all
     @watch = Watch.new
   end
 
   # GET /watches/1/edit
   def edit
+  	@stocks = Stock.all
   end
 
   # POST /watches
@@ -24,7 +27,7 @@ class WatchesController < ApplicationController
     @watch = Watch.new(watch_params)
 
     if @watch.save
-      flash.notice = "You're now watching #{@watch.code}"
+      flash.notice = "You're now watching #{@watch.stock.code}"
       redirect_to action: 'index'
     else
       render action: 'new'
@@ -55,6 +58,6 @@ class WatchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def watch_params
-      params.require(:watch).permit(:code,:threshold)
+      params.require(:watch).permit(:stock_id,:threshold)
     end
 end
