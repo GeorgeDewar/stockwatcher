@@ -12,7 +12,7 @@
   <% end %>
 
   <%= f.label :stock %>
-  <%= collection_select(:watch, :stock_id, @stocks, :id, :name, {:prompt => true}, :class => 'form-control') %>
+  <%= collection_select(:watch, :stock_id, @stocks, :id, :label, {:prompt => true}, :class => 'form-control') %>
   <%= f.text_field :threshold %>
 
   <div class="actions">

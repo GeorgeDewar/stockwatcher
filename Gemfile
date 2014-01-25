@@ -56,3 +56,6 @@ gem 'bootstrap_form'
 # authentication
 gem 'devise'
 
+# scheduling
+gem 'whenever', :require => false
+

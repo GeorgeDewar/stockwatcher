@@ -4,8 +4,8 @@
   <thead>
     <tr>
       <th>Code</th>
+      <th>Name</th>
       <th>Threshold</th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -15,8 +15,9 @@
     <% @watches.each do |watch| %>
       <tr>
       	<td><%= watch.stock.code %></td>
+      	<td><%= watch.stock.name %></td>
       	<td><%= watch.threshold %></td>
-        <td><%= link_to 'Edit', edit_watch_path(watch) %></td>
+        <td><%= link_to 'Edit', edit_watch_path(watch) %> | </td>
         <td><%= link_to 'Remove', watch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

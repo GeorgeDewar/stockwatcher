@@ -1,5 +1,6 @@
 class WatchesController < ApplicationController
   before_action :set_watch, only: [:show, :edit, :update, :destroy]
+  before_action :get_stocks, only: [:new, :edit, :create, :update]
   before_filter :authenticate_user!
 
   # GET /watches
@@ -13,18 +14,17 @@ class WatchesController < ApplicationController
 
   # GET /watches/new
   def new
-  	@stocks = Stock.all
     @watch = Watch.new
   end
 
   # GET /watches/1/edit
   def edit
-  	@stocks = Stock.all
   end
 
   # POST /watches
   def create
     @watch = Watch.new(watch_params)
+    @watch.user = current_user
 
     if @watch.save
       flash.notice = "You're now watching #{@watch.stock.code}"
@@ -54,6 +54,10 @@ class WatchesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_watch
       @watch = Watch.find(params[:id])
+    end
+
+    def get_stocks
+      @stocks = Stock.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

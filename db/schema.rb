@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140124225107) do
+ActiveRecord::Schema.define(version: 20140125021756) do
 
   create_table "stocks", force: true do |t|
     t.string   "code",       limit: 3,  null: false
@@ -43,11 +43,11 @@ ActiveRecord::Schema.define(version: 20140124225107) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "watches", force: true do |t|
-    t.decimal  "threshold"
-    t.integer  "user_id"
+    t.decimal  "threshold",  null: false
+    t.integer  "user_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "stock_id"
+    t.integer  "stock_id",   null: false
   end
 
   add_index "watches", ["stock_id"], name: "index_watches_on_stock_id"
