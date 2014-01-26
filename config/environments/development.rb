@@ -31,9 +31,9 @@ Stockwatcher::Application.configure do
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
-    domain:               'dewar.co.nz',
-    user_name:            'george@dewar.co.nz',
-    password:             'MacGyver60',
+    domain:               'stockwatcher.co.nz',
+    user_name:            'support@stockwatcher.co.nz',
+    password:             '<REDACTED>',
     authentication:       'plain',
     enable_starttls_auto: true
   }
