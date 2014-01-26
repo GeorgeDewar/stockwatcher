@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140125021756) do
+ActiveRecord::Schema.define(version: 20140125093722) do
+
+  create_table "quotes", force: true do |t|
+    t.integer  "stock_id"
+    t.decimal  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "quotes", ["stock_id"], name: "index_quotes_on_stock_id"
 
   create_table "stocks", force: true do |t|
     t.string   "code",       limit: 3,  null: false

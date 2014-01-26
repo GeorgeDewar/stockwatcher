@@ -57,5 +57,6 @@ gem 'bootstrap_form'
 gem 'devise'
 
 # scheduling
-gem 'whenever', :require => false
+#gem 'whenever', :require => false
 
+gem 'rufus-scheduler'
