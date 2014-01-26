@@ -49,10 +49,12 @@ class Quote < ActiveRecord::Base
           Current price: #{current_quote.price}
           Difference: #{diff}
           Change: #{percent_change}%
+          Threshold: #{watch.threshold}%
         eos
 
         if diff.abs > watch.threshold then
           puts "ALERT"
+          AlertMailer.stock_alert(watch.user).deliver
         end
 
 	    end
