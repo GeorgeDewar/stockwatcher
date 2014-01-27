@@ -5,7 +5,7 @@
 	price of <%= number_to_currency(@yesterday_close.price) %> (your alert threshold 
 	is set at <%= number_to_percentage(@watch.threshold, precision: 2) %>).</p>
 
-<p style="text-align: center; margin: 10px 0;">
+<p style="text-align: center; margin: 20px 0;">
   <span style="font-size: 1.5em;"><%= @watch.stock.name %> (<%= @watch.stock.code %>)</span><br />
   <span style="font-size: 2.5em;"><%= number_to_currency(@current_quote.price) %></span><br />
   <span style="font-size: 1.5em; color: <%= @direction_up ? 'green' : 'red' %>">
