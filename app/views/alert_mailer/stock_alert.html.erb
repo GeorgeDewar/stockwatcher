@@ -5,14 +5,14 @@
 	price of <%= number_to_currency(@yesterday_close.price) %> (your alert threshold 
 	is set at <%= number_to_percentage(@watch.threshold, precision: 2) %>).</p>
 
-<p style="text-align: center;">
+<p style="text-align: center; margin: 10px 0;">
   <span style="font-size: 1.5em;"><%= @watch.stock.name %> (<%= @watch.stock.code %>)</span><br />
   <span style="font-size: 2.5em;"><%= number_to_currency(@current_quote.price) %></span><br />
   <span style="font-size: 1.5em; color: <%= @direction_up ? 'green' : 'red' %>">
   	<%= @direction_up ? '+' : '-' %><%= number_to_currency(@diff) %> / 
   	<%= @direction_up ? '+' : '-' %><%= number_to_percentage(@percent_change, precision: 2) %>
   </span><br />
-  <span><%= @current_quote.created_at.to_s(:short) %></span>
+  <span>Data retrieved at <%= @current_quote.created_at.strftime("%I:%M %p on %B %d") %></span>
 </p>
 
 <p>Stock Watcher will not send you another alert today for this stock.</p>
