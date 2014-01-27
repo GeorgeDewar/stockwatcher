@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20140127092521) do
   add_index "stocks", ["code"], name: "index_stocks_on_code", unique: true
 
   create_table "users", force: true do |t|
-    t.string   "email"
+    t.string   "email",                  default: "", null: false
     t.string   "first_name"
     t.string   "last_name"
     t.datetime "created_at"
