@@ -1,1 +1,21 @@
-Hello
+<p>Your Stock Watcher alert on <%= @watch.stock.code %> has been triggered.</p>
+
+<p><%= @watch.stock.code %> has <%= @direction_up ? 'risen' : 'fallen' %> 
+	<strong><%= number_to_percentage(@percent_change, precision: 2) %></strong> from the last closing 
+	price of <%= number_to_currency(@yesterday_close.price) %> (your alert threshold 
+	is set at <%= number_to_percentage(@watch.threshold, precision: 2) %>).</p>
+
+<p style="text-align: center;">
+  <span style="font-size: 1.5em;"><%= @watch.stock.name %> (<%= @watch.stock.code %>)</span><br />
+  <span style="font-size: 2.5em;"><%= number_to_currency(@current_quote.price) %></span><br />
+  <span style="font-size: 1.5em; color: <%= @direction_up ? 'green' : 'red' %>">
+  	<%= @direction_up ? '+' : '-' %><%= number_to_currency(@diff) %> / 
+  	<%= @direction_up ? '+' : '-' %><%= number_to_percentage(@percent_change, precision: 2) %>
+  </span><br />
+  <span><%= @current_quote.created_at.to_s(:short) %></span>
+</p>
+
+<p>Stock Watcher will not send you another alert today for this stock.</p>
+
+<p>Thank you for using Stock Watcher. Please feel free to reply to this email if you would like to 
+	contact us.</p>
