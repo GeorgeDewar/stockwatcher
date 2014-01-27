@@ -45,16 +45,17 @@ class Quote < ActiveRecord::Base
         percent_change = (diff / yesterday_close.price) * 100.0
 
         puts <<-eos
-          Yesterday's close: #{yesterday_close.price}
-          Current price: #{current_quote.price}
-          Difference: #{diff}
-          Change: #{percent_change}%
-          Threshold: #{watch.threshold}%
+          \nChecking watch on '#{watch.stock.code}' for user '#{watch.user.email}'
+          Yesterday's close: $#{sprintf('%0.2f', yesterday_close.price)}
+          Current price: $#{sprintf('%0.2f', current_quote.price)}
+          Difference: $#{sprintf('%0.2f', diff)}
+          Change: #{sprintf('%0.2f', percent_change)}%
+          Threshold: #{sprintf('%0.2f', watch.threshold)}%
         eos
 
         if diff.abs > watch.threshold then
-          puts "ALERT"
-          AlertMailer.stock_alert(watch.user).deliver
+          puts "Threshold exceeded; sending alert\n"
+          AlertMailer.stock_alert(watch, yesterday_close, current_quote, diff, percent_change).deliver
         end
 
 	    end
