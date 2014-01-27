@@ -54,8 +54,14 @@ class Quote < ActiveRecord::Base
         eos
 
         if diff.abs > watch.threshold then
-          puts "Threshold exceeded; sending alert\n"
-          AlertMailer.stock_alert(watch, yesterday_close, current_quote, diff, percent_change).deliver
+          if Alert.where("watch_id = ? and date(created_at) = date()") then
+            puts "Threshold exceeded; alert already sent today"
+          else
+            puts "Threshold exceeded; sending alert\n"
+            if AlertMailer.stock_alert(watch, yesterday_close, current_quote, diff, percent_change).deliver then
+              Alert.new(:watch => watch).save
+            end
+          end
         end
 
 	    end
