@@ -5,7 +5,7 @@ class WatchesController < ApplicationController
 
   # GET /watches
   def index
-    @watches = Watch.all
+    @watches = Watch.where(:user => current_user)
   end
 
   # GET /watches/1
