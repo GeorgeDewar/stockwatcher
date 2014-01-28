@@ -8,11 +8,16 @@ day's close), and if this is exceeded Stock Watcher will send you an email notif
 one of your stocks so you can observe more closely, or act as you see fit.</p>
 
 <p>Stock Watcher checks prices every 10 minutes at the moment, and prices are delayed by 
-20 minutes, but I am working on speeding this up.</p>
+20 minutes, but I am working on speeding this up. You will be notified as soon as your 
+alert triggers.</p>
 
 <p><strong>Please be aware</strong> that this tool is in the early stages of development, and may not work 
 correctly. Use it at your own risk, and do not rely on the information provided by Stock 
 Watcher for decision making.</p>
 
-<p>To get started, <%= link_to "create an account", new_registration_path('user') %> 
-or <%= link_to "sign in", new_session_path('user') %> if you already have one.</p>
+<% if current_user %>
+	<p><%= link_to "Go to my watches", watches_path %></p>
+<% else %>
+	<p>To get started, <%= link_to "create an account", new_registration_path('user') %> 
+	or <%= link_to "sign in", new_session_path('user') %> if you already have one.</p>
+<% end %>

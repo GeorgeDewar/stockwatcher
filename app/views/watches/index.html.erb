@@ -1,29 +1,34 @@
 <h1>Stocks I'm watching</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Code</th>
-      <th>Name</th>
-      <th>Threshold</th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @watches.each do |watch| %>
+<% if @watches.empty? %>
+  <p>You don't have any watches! Click the button below to watch a stock.</p>
+  <p><%= link_to 'Watch a stock', new_watch_path, class: "btn btn-primary" %></p>
+<% else %>
+  <table class="table">
+    <thead>
       <tr>
-      	<td><%= watch.stock.code %></td>
-      	<td><%= watch.stock.name %></td>
-      	<td><%= number_to_percentage(watch.threshold, precision: 2) %></td>
-        <td>
-          <%= link_to 'Edit', edit_watch_path(watch) %> | 
-          <%= link_to 'Remove', watch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Threshold</th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @watches.each do |watch| %>
+        <tr>
+        	<td><%= watch.stock.code %></td>
+        	<td><%= watch.stock.name %></td>
+        	<td><%= number_to_percentage(watch.threshold, precision: 2) %></td>
+          <td>
+            <%= link_to 'Edit', edit_watch_path(watch) %> | 
+            <%= link_to 'Remove', watch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'Watch another stock', new_watch_path, class: "btn btn-primary" %>
+  <p><%= link_to 'Watch another stock', new_watch_path, class: "btn btn-primary" %></p>
+<% end %>
+
+
