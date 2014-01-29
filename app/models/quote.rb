@@ -46,8 +46,8 @@ class Quote < ActiveRecord::Base
 
         puts <<-eos
           \nChecking watch on '#{watch.stock.code}' for user '#{watch.user.email}'
-          Yesterday's close: $#{sprintf('%0.2f', yesterday_close.price)}
-          Current price: $#{sprintf('%0.2f', current_quote.price)}
+          Yesterday's close: $#{sprintf('%0.2f', yesterday_close.price)} at #{yesterday_close.created_at.to_s}
+          Current price: $#{sprintf('%0.2f', current_quote.price)} at #{current_quote.created_at.to_s}
           Difference: $#{sprintf('%0.2f', diff)}
           Change: #{sprintf('%0.2f', percent_change)}%
           Threshold: #{sprintf('%0.2f', watch.threshold)}%
