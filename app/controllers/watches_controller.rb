@@ -8,10 +8,6 @@ class WatchesController < ApplicationController
     @watches = Watch.where(:user => current_user)
   end
 
-  # GET /watches/1
-  def show
-  end
-
   # GET /watches/new
   def new
     @watch = Watch.new
@@ -19,6 +15,9 @@ class WatchesController < ApplicationController
 
   # GET /watches/1/edit
   def edit
+    if @watch.user != current_user then 
+      raise "You are not permitted to access this resource"
+    end
   end
 
   # POST /watches
