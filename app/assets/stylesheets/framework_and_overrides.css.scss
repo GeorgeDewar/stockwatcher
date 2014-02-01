@@ -39,3 +39,11 @@ section {
   @extend .row;
   margin-top: 20px;
   }
+
+/* Set the fixed height of the footer here */
+footer {
+  height: 45px;
+  background-color: #cccccc;
+  padding-top: 10px;
+}
+
