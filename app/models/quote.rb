@@ -54,7 +54,7 @@ class Quote < ActiveRecord::Base
         eos
 
         if diff.abs > watch.threshold then
-          if Alert.where("watch_id = ? and date(created_at) = date()") then
+          if Alert.where("watch_id = ? and date(created_at) = date()").exists? then
             puts "Threshold exceeded; alert already sent today"
           else
             puts "Threshold exceeded; sending alert\n"
