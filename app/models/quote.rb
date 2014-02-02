@@ -53,8 +53,8 @@ class Quote < ActiveRecord::Base
           Threshold: #{sprintf('%0.2f', watch.threshold)}%
         eos
 
-        if diff.abs > watch.threshold then
-          if Alert.where("watch_id = ? and date(created_at) = date()").exists? then
+        if percent_change.abs > watch.threshold then
+          if Alert.where("watch_id = ? and date(created_at) = date(datetime(), 'localtime')", watch_id).exists? then
             puts "Threshold exceeded; alert already sent today"
           else
             puts "Threshold exceeded; sending alert\n"
