@@ -15,7 +15,8 @@
   <span>Data retrieved at <%= @current_quote.created_at.strftime("%I:%M %p on %B %d") %></span>
 </p>
 
-<p>Stock Watcher will not send you another alert today for this stock.</p>
+<p>Stock Watcher will not send you another alert today for this stock. To see current information, see
+    <a href="https://www.nzx.com/markets/NZSX/securities/<%= @watch.stock.code %>">the NZX listing</a>.</p>
 
 <p>Thank you for using Stock Watcher. Please feel free to reply to this email if you would like to 
 	contact us.</p>
