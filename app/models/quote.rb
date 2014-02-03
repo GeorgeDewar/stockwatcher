@@ -28,7 +28,7 @@ class Quote < ActiveRecord::Base
 	    Watch.all.each do |watch|
         # Yesterday's close, specifically the most recent quote for that stock before today
         yesterday_close = Quote.where(
-          'stock_id = ? and created_at = (select max(created_at) from quotes where stock_id = ? and date(created_at) < date())', 
+          'stock_id = ? and created_at = (select max(created_at) from quotes where stock_id = ? and date(created_at) < date(datetime(), \'localtime\'))',
           watch.stock.id, watch.stock.id).first
 
         if(!yesterday_close) then
