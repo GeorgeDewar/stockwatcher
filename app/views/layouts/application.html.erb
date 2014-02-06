@@ -2,8 +2,10 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Stockwatcher" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Stockwatcher" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "Stock Watcher :: Set up custom alerts for stocks on the NZX" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Stock Watcher lets you
+    specify stocks on the NZX that you're interested in, and watches them for you, alerting you if your criteria are
+    met." %>">
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
