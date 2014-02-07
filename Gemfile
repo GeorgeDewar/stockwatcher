@@ -57,6 +57,8 @@ gem 'bootstrap_form'
 gem 'devise'
 
 # scheduling
-#gem 'whenever', :require => false
-
 gem 'rufus-scheduler'
+
+# redirect test email
+gem 'sanitize_email'
+

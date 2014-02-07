@@ -88,6 +88,7 @@ GEM
       json (~> 1.4)
     rufus-scheduler (3.0.4)
       tzinfo
+    sanitize_email (1.1.4)
     sass (3.2.13)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -136,6 +137,7 @@ DEPENDENCIES
   rails (= 4.0.2)
   rails_layout
   rufus-scheduler
+  sanitize_email
   sass-rails (~> 4.0.0)
   sdoc
   sqlite3
