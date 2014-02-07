@@ -26,6 +26,7 @@
               (<%= watch.stock.daily_diff.direction %><%= number_to_currency(watch.stock.daily_diff.diff.abs) %> /
                 <%= watch.stock.daily_diff.direction %><%= number_to_percentage(watch.stock.daily_diff.percent_change.abs, precision: 2) %>)
             </span>
+            <a href="https://www.nzx.com/markets/NZSX/securities/<%= watch.stock.code %>">more</a>
           </td>
           <td>
             <%= link_to 'Edit', edit_watch_path(watch) %> | 
