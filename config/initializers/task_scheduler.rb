@@ -1,6 +1,6 @@
 scheduler = Rufus::Scheduler.new
 
-scheduler.every("1m") do
+scheduler.every("10m") do
    	puts "--- #{DateTime.now} Updating prices ---\n"
    	Quote.update_prices
    	puts "--- Checking watches ---\n"
