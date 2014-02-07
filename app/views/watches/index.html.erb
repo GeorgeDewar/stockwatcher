@@ -22,9 +22,11 @@
         	<td><%= watch.stock.name %></td>
         	<td>+/- <%= number_to_percentage(watch.threshold, precision: 2) %> from prev close</td>
           <td><%= number_to_currency(watch.stock.latest_quote.price) %>
-            <span style="color: <%= watch.stock.daily_diff.direction == '+'  ? 'green' : 'red' %>;">
-              (<%= watch.stock.daily_diff.direction %><%= number_to_currency(watch.stock.daily_diff.diff.abs) %> /
-                <%= watch.stock.daily_diff.direction %><%= number_to_percentage(watch.stock.daily_diff.percent_change.abs, precision: 2) %>)
+            <span style="color: <%= direction_to_color(watch.stock.daily_diff.direction) %>;">
+              (<% if watch.stock.daily_diff.diff == 0 then %>no change<% else %>
+                <%= watch.stock.daily_diff.direction %><%= number_to_currency(watch.stock.daily_diff.diff.abs) %> /
+                <%= watch.stock.daily_diff.direction %><%= number_to_percentage(watch.stock.daily_diff.percent_change.abs, precision: 2) %>
+              <% end %>)
             </span>
             <a href="https://www.nzx.com/markets/NZSX/securities/<%= watch.stock.code %>">more</a>
           </td>
