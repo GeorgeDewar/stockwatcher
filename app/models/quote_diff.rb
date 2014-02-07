@@ -16,6 +16,13 @@ class QuoteDiff
   end
 
   def direction
-    diff > 0 ? '+' : '-'
+    case
+      when diff > 0
+        '+'
+      when diff < 0
+        '-'
+      else
+        ''
+    end
   end
 end
