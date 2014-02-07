@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140127092521) do
+ActiveRecord::Schema.define(version: 20140207220937) do
 
   create_table "alerts", force: true do |t|
     t.integer  "watch_id"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20140127092521) do
     t.decimal  "price"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "last_trade_time"
+    t.decimal  "prev_close"
   end
 
   add_index "quotes", ["stock_id"], name: "index_quotes_on_stock_id"
