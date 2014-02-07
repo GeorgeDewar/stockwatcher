@@ -12,10 +12,9 @@ class Quote < ActiveRecord::Base
 	  	url = URI.parse("http://download.finance.yahoo.com/d/quotes.csv?s=#{stocks}&f=sl1t1d1")
 		  req = Net::HTTP::Get.new(url.to_s)
 		  res = Net::HTTP.start(url.host, url.port) { |http| http.request(req) }
-		
-  		quotes = CSV.parse(res.body)
 
-  		puts quotes
+      puts res.body
+  		quotes = CSV.parse(res.body)
 
   		quotes.each do |quote|
   		  code = quote[0].split('.')[0] # Remove suffix, e.g. 'XRO.NZ' => 'XRO'
