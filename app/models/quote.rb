@@ -26,21 +26,16 @@ class Quote < ActiveRecord::Base
 
 	  def check_watches
 	    Watch.all.each do |watch|
-        # Yesterday's close, specifically the most recent quote for that stock before today
-        yesterday_close = Quote.where(
-          'stock_id = ? and created_at = (select max(created_at) from quotes where stock_id = ? and date(created_at) < date(datetime(), \'localtime\'))',
-          watch.stock.id, watch.stock.id).first
+
+        yesterday_close = watch.stock.yesterday_close
 
         if(!yesterday_close) then
           puts "No previous price found for #{watch.stock.code}"
           next
         end
 
-        # Current price, specifically the most recent quote for this stock
-        current_quote = Quote.where(
-          'stock_id = ? and created_at = (select max(created_at) from quotes where stock_id = ?)', 
-          watch.stock.id, watch.stock.id).first
-
+        current_quote = watch.stock.latest_quote
+        
         diff = current_quote.price - yesterday_close.price
         percent_change = (diff / yesterday_close.price) * 100.0
 
