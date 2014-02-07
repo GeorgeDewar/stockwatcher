@@ -1,18 +1,17 @@
 class QuoteDiff
 
-  attr_accessor :prev, :current
+  attr_accessor :quote
 
-  def initialize(_prev, _current)
-    @prev = _prev
-    @current = _current
+  def initialize(_quote)
+    @quote = _quote
   end
 
   def diff
-    @current.price - @prev.price
+    @quote.price - @quote.prev_close
   end
 
   def percent_change
-    (diff / @prev.price) * 100.0
+    (diff / @quote.prev_close) * 100.0
   end
 
   def direction
