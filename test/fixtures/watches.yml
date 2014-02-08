@@ -1,11 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  code: MyString
-  threshold: 9.99
-  user_id: 
+  stock: one
+  threshold: 1
+  user: one
 
 two:
-  code: MyString
-  threshold: 9.99
-  user_id: 
+  stock: two
+  threshold: 1
+  user: one
+

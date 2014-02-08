@@ -1,9 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  stock_id: 
-  price: 
+  stock: one
+  price: 40.00
+  prev_close: 35.00
+  last_trade_time: <%= DateTime.now %>
 
 two:
-  stock_id: 
-  price: 
+  stock: two
+  price: 4.00
+  prev_close: 5.00
+  last_trade_time: <%= DateTime.now %>
+

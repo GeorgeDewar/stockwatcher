@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  code: MyString
-  name: MyString
+  code: XRO
+  name: Xero Ltd
 
 two:
-  code: MyString
-  name: MyString
+  code: WHS
+  name: The Warehouse
