@@ -10,3 +10,12 @@ two:
   threshold: 1
   user: one
 
+three:
+  stock: one
+  threshold: 0.5
+  user: two
+
+four:
+  stock: two
+  threshold: 0.5
+  user: two
