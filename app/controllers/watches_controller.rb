@@ -15,8 +15,8 @@ class WatchesController < ApplicationController
 
   # GET /watches/1/edit
   def edit
-    if @watch.user != current_user then 
-      raise "You are not permitted to access this resource"
+    if @watch.user != current_user then
+      raise ActiveRecord::RecordNotFound
     end
   end
 
@@ -35,6 +35,9 @@ class WatchesController < ApplicationController
 
   # PATCH/PUT /watches/1
   def update
+    if @watch.user != current_user then
+      raise ActiveRecord::RecordNotFound
+    end
     if @watch.update(watch_params)
       flash.notice = "You've successfully updated your watch"
       redirect_to action: 'index'
