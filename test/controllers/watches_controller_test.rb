@@ -2,6 +2,7 @@ require 'test_helper'
 
 class WatchesControllerTest < ActionController::TestCase
   setup do
+    sign_in users(:one)
     @watch = watches(:one)
   end
 
@@ -18,10 +19,10 @@ class WatchesControllerTest < ActionController::TestCase
 
   test "should create watch" do
     assert_difference('Watch.count') do
-      post :create, watch: {  }
+      post :create, watch: { stock_id: stocks(:one), threshold: 1 }
     end
 
-    assert_redirected_to watch_path(assigns(:watch))
+    assert_redirected_to watches_path
   end
 
   test "should show watch" do
@@ -35,8 +36,8 @@ class WatchesControllerTest < ActionController::TestCase
   end
 
   test "should update watch" do
-    patch :update, id: @watch, watch: {  }
-    assert_redirected_to watch_path(assigns(:watch))
+    patch :update, id: @watch, watch: { stock_id: stocks(:one), threshold: 2 }
+    assert_redirected_to watches_path
   end
 
   test "should destroy watch" do
