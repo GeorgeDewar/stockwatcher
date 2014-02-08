@@ -8,7 +8,7 @@ class Stock < ActiveRecord::Base
   def latest_quote
     Quote.where(
       'stock_id = ? and created_at = (select max(created_at) from quotes where stock_id = ?)',
-      id, id).first
+      id, id).first or raise "Could not find the latest quote for #{code}"
   end
 
   def daily_diff
