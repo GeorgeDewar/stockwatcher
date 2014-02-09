@@ -7,3 +7,8 @@ one:
 two:
   code: WHS
   name: The Warehouse
+
+three:        # this one has no quotes
+  code: NZX
+  name: NZX
+
