@@ -1,21 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+one:              # no alert sent, as one was already sent today
   stock: one
   threshold: 1
   user: one
 
-two:
+two:              # no alert sent, as one was already sent today
   stock: two
   threshold: 1
   user: one
 
-three:
+three:            # should be sent, since threshold is exceeded
   stock: one
   threshold: 0.5
   user: two
 
-four:
+four:             # should not be sent, since threshold is not exceeded
   stock: two
-  threshold: 0.5
+  threshold: 70
   user: two

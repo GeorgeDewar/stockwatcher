@@ -28,42 +28,44 @@ class Quote < ActiveRecord::Base
 
 	  def check_watches
 	    Watch.all.each do |watch|
+        check_watch(watch)
+      end
+    end
 
-        quote = watch.stock.latest_quote
+    def check_watch(watch)
+      quote = watch.stock.latest_quote
 
-        if(!quote) then
-          puts "No quotes found for #{watch.stock.code}"
-          next
-        end
+      if(!quote) then
+        puts "No quotes found for #{watch.stock.code}"
+        return
+      end
 
-        daily_diff = watch.stock.daily_diff
+      daily_diff = watch.stock.daily_diff
 
-        puts <<-eos
+      puts <<-eos
           \nChecking watch on '#{watch.stock.code}' for user '#{watch.user.email}'
           Yesterday's close: $#{sprintf('%0.2f', quote.prev_close)}
           Current price: $#{sprintf('%0.2f', quote.price)} at #{quote.created_at.to_s}
           Difference: $#{sprintf('%0.2f', daily_diff.diff)}
           Change: #{sprintf('%0.2f', daily_diff.percent_change)}%
           Threshold: #{sprintf('%0.2f', watch.threshold)}%
-        eos
+      eos
 
-        if daily_diff.percent_change.abs > watch.threshold then
-          if Alert.where("watch_id = ? and date(created_at) = date(datetime(), 'localtime')", watch.id).exists? then
-            puts 'Threshold exceeded; not sending alert as alert already sent today'
-          elsif quote.last_trade_time.to_date != Date.today
-            puts 'Threshold exceeded; not sending alert as last trade was not today'
-          else
-            puts "Threshold exceeded; sending alert\n"
-            if AlertMailer.stock_alert(watch, daily_diff).deliver then
-              Alert.new(:watch => watch).save
-            end
-          end
+      if daily_diff.percent_change.abs > watch.threshold then
+        if Alert.where("watch_id = ? and date(created_at) = date(datetime(), 'localtime')", watch.id).exists? then
+          puts 'Threshold exceeded; not sending alert as alert already sent today'
+        elsif quote.last_trade_time.to_date != Date.today
+          puts 'Threshold exceeded; not sending alert as last trade was not today'
         else
-          puts 'Threshold not exceeded'
+          puts "Threshold exceeded; sending alert\n"
+          if AlertMailer.stock_alert(watch, daily_diff).deliver then
+            Alert.new(:watch => watch).save
+          end
         end
+      else
+        puts 'Threshold not exceeded'
+      end
 
-	    end
-
-	  end
+    end
 	end
 end
