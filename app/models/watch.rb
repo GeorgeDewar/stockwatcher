@@ -4,4 +4,5 @@ class Watch < ActiveRecord::Base
 
   validates :stock, presence: true
   validates :threshold, presence: true, :numericality => { :greater_than => 0}
+
 end

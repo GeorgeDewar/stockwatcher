@@ -1,7 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  watch_id: 
+  watch: one
+  created_at: <%= DateTime.now - 1.hours %>
+  updated_at: <%= DateTime.now - 1.hours %>
 
 two:
-  watch_id: 
+  watch: two
+  created_at: <%= DateTime.now - 1.hours %>
+  updated_at: <%= DateTime.now - 1.hours %>
+
+
+
