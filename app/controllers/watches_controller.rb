@@ -52,6 +52,10 @@ class WatchesController < ApplicationController
     redirect_to watches_url
   end
 
+  def stocks_json
+    render json: Stock.select('id, code, name')
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_watch

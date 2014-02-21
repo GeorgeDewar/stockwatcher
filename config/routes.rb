@@ -9,6 +9,8 @@ Stockwatcher::Application.routes.draw do
 
   resources :watches, :except => [:show]
 
+  get 'lookup/stocks' => 'watches#stocks_json'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
