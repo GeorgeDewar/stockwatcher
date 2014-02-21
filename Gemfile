@@ -49,8 +49,8 @@ gem 'bootstrap-sass'
 group :development do
   gem 'rails_layout'
 end
-gem 'bootstrap-typeahead-rails'
-
+gem 'twitter-typeahead-rails', :git => 'https://github.com/Qureana/twitter-typeahead-rails'
+gem 'mustachejs-rails'
 gem 'bootstrap_form'
 
 # authentication

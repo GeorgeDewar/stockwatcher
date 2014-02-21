@@ -14,5 +14,46 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
-//= require bootstrap-typeahead-rails
+//= require twitter/typeahead
+//= require mustache
 //= require_tree .
+
+// A super simple template engine to remove dependency on a real one
+var simpleCompile = function(template) {
+        return {
+            render: function(context) {
+                return template.replace(/\{\{(\w+)\}\}/g, function (match,p1) { return context[p1]; });
+            }
+        };
+};
+
+var stocks = new Bloodhound({
+    datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.disp); },
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    limit: 10,
+    prefetch: {
+        url: '/lookup/stocks',
+        filter: function(list) {
+            return $.map(list, function(stock) { return { code: stock.code, name: stock.name, disp: (stock.code + ' :: ' + stock.name + '') }; });
+        }
+    }
+});
+
+stocks.initialize();
+
+// instantiate the typeahead UI
+$(function(){
+    $('#watch_stock').typeahead(null, {
+        name: 'stocks',
+        displayKey: 'disp',
+        source: stocks.ttAdapter(),
+        templates: {
+            suggestion: Mustache.compile([
+                '<p class="stock-code">{{code}}</p>',
+                '<p class="stock-name">{{name}}</p>'
+            ].join(''))
+        }
+
+    });
+
+});

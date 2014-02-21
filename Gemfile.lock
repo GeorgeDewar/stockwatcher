@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/Qureana/twitter-typeahead-rails
+  revision: cb6c90502956a2b4a206e7a14dad4f00d3930ee3
+  specs:
+    twitter-typeahead-rails (0.10.1)
+      actionpack (>= 3.1)
+      jquery-rails
+      railties (>= 3.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -30,8 +39,6 @@ GEM
     bcrypt-ruby (3.1.2)
     bootstrap-sass (3.0.3.0)
       sass (~> 3.2)
-    bootstrap-typeahead-rails (0.9.3.3)
-      railties (>= 3.0)
     bootstrap_form (2.0.1)
     builder (3.1.4)
     coffee-rails (4.0.1)
@@ -64,6 +71,7 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.8.4)
+    mustachejs-rails (0.7.3)
     orm_adapter (0.5.0)
     polyglot (0.3.3)
     rack (1.5.2)
@@ -128,12 +136,12 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass
-  bootstrap-typeahead-rails
   bootstrap_form
   coffee-rails (~> 4.0.0)
   devise
   jbuilder (~> 1.2)
   jquery-rails
+  mustachejs-rails
   rails (= 4.0.2)
   rails_layout
   rufus-scheduler
@@ -142,4 +150,5 @@ DEPENDENCIES
   sdoc
   sqlite3
   turbolinks
+  twitter-typeahead-rails!
   uglifier (>= 1.3.0)
