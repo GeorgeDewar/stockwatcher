@@ -18,15 +18,6 @@
 //= require mustache
 //= require_tree .
 
-// A super simple template engine to remove dependency on a real one
-var simpleCompile = function(template) {
-        return {
-            render: function(context) {
-                return template.replace(/\{\{(\w+)\}\}/g, function (match,p1) { return context[p1]; });
-            }
-        };
-};
-
 var stocks = new Bloodhound({
     datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.disp); },
     queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -34,7 +25,7 @@ var stocks = new Bloodhound({
     prefetch: {
         url: '/lookup/stocks',
         filter: function(list) {
-            return $.map(list, function(stock) { return { code: stock.code, name: stock.name, disp: (stock.code + ' :: ' + stock.name + '') }; });
+            return $.map(list, function(stock) { return { id: stock.id, code: stock.code, name: stock.name, disp: (stock.code + ' :: ' + stock.name + '') }; });
         }
     }
 });
@@ -47,13 +38,16 @@ $(function(){
         name: 'stocks',
         displayKey: 'disp',
         source: stocks.ttAdapter(),
+        restrictInputToDatum: true,
         templates: {
             suggestion: Mustache.compile([
                 '<p class="stock-code">{{code}}</p>',
                 '<p class="stock-name">{{name}}</p>'
             ].join(''))
         }
-
     });
 
+    $('#watch_stock').on('typeahead:selected typeahead:autocompleted', function(e,datum) {
+        $('#watch_stock').val(datum.id);
+    });
 });
