@@ -12,42 +12,19 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap
-//= require twitter/typeahead
-//= require mustache
+//= require select2
 //= require_tree .
 
-var stocks = new Bloodhound({
-    datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.disp); },
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    limit: 10,
-    prefetch: {
-        url: '/lookup/stocks',
-        filter: function(list) {
-            return $.map(list, function(stock) { return { id: stock.id, code: stock.code, name: stock.name, disp: (stock.code + ' :: ' + stock.name + '') }; });
-        }
-    }
-});
+function split(str, separator, limit) {
+    str = str.split(separator);
+    if(str.length <= limit) return str;
 
-stocks.initialize();
+    var ret = str.splice(0, limit);
+    ret.push(str.join(separator));
 
-// instantiate the typeahead UI
-$(function(){
-    $('#watch_stock').typeahead(null, {
-        name: 'stocks',
-        displayKey: 'disp',
-        source: stocks.ttAdapter(),
-        restrictInputToDatum: true,
-        templates: {
-            suggestion: Mustache.compile([
-                '<p class="stock-code">{{code}}</p>',
-                '<p class="stock-name">{{name}}</p>'
-            ].join(''))
-        }
-    });
+    return ret;
+}
 
-    $('#watch_stock').on('typeahead:selected typeahead:autocompleted', function(e,datum) {
-        $('#watch_stock').val(datum.id);
-    });
-});
+
+
