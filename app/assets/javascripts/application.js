@@ -12,7 +12,19 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap
-//= require bootstrap-typeahead-rails
+//= require select2
 //= require_tree .
+
+function split(str, separator, limit) {
+    str = str.split(separator);
+    if(str.length <= limit) return str;
+
+    var ret = str.splice(0, limit);
+    ret.push(str.join(separator));
+
+    return ret;
+}
+
+
+

@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <%= f.label :stock %>
+  <%= f.label :stock_id, 'Stock' %>
   <%= collection_select(:watch, :stock_id, @stocks, :id, :label, {:prompt => true}, :class => 'form-control') %>
   <%= f.text_field :threshold, :label => 'Threshold (percentage change in either direction from yesterday\'s close to trigger an alert)' %>
 
