@@ -19,7 +19,8 @@ class Quote < ActiveRecord::Base
   		quotes.each do |quote|
   		  code = quote[0].split('.')[0] # Remove suffix, e.g. 'XRO.NZ' => 'XRO'
   		  price = quote[1]
-        last_trade_time = DateTime.strptime("#{quote[3]} #{quote[2]}", '%m/%d/%Y %H:%M%z').in_time_zone('Auckland')
+        last_trade_time = DateTime.strptime("#{quote[3]} #{quote[2]}", '%m/%d/%Y %H:%M%P')
+        last_trade_time = ActiveSupport::TimeZone['America/New_York'].local_to_utc(last_trade_time).in_time_zone('Auckland')
         prev_close = quote[4]
   		  Quote.new(:stock => Stock.find_by_code(code), :price => price,
                   :prev_close => prev_close, :last_trade_time => last_trade_time).save
