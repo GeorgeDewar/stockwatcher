@@ -31,9 +31,6 @@
     <orderEntry type="library" scope="PROVIDED" name="bootstrap_form (v2.0.1, RVM: ruby-2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="builder (v3.1.4, RVM: ruby-2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v1.5.2, RVM: ruby-2.0.0-p353) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="coffee-rails (v4.0.1, RVM: ruby-2.0.0-p353) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="coffee-script (v2.2.0, RVM: ruby-2.0.0-p353) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="coffee-script-source (v1.6.3, RVM: ruby-2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="columnize (v0.3.6, RVM: ruby-2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="debugger (v1.6.5, RVM: ruby-2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="debugger-linecache (v1.2.0, RVM: ruby-2.0.0-p353) [gem]" level="application" />
@@ -58,12 +55,10 @@
     <orderEntry type="library" scope="PROVIDED" name="rails_layout (v1.0.5, RVM: ruby-2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="railties (v4.0.2, RVM: ruby-2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v10.1.1, RVM: ruby-2.0.0-p353) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rdoc (v4.1.1, RVM: ruby-2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rufus-scheduler (v3.0.4, RVM: ruby-2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sanitize_email (v1.1.4, RVM: ruby-2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass (v3.2.13, RVM: ruby-2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass-rails (v4.0.1, RVM: ruby-2.0.0-p353) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sdoc (v0.4.0, RVM: ruby-2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="select2-rails (v3.5.2, RVM: ruby-2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v2.10.1, RVM: ruby-2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets-rails (v2.0.1, RVM: ruby-2.0.0-p353) [gem]" level="application" />
