@@ -1,42 +1,20 @@
 source 'https://rubygems.org'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+# Core
+gem 'rails', '4.2.5'
+gem 'pg'
+gem 'jbuilder'
+gem 'devise'
+gem 'rufus-scheduler'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
-
-group :assets do
-  # Use Uglifier as compressor for JavaScript assets
-  gem 'uglifier', '>= 1.3.0'
-end
-
-# Use jquery as the JavaScript library
+# Views and assets
+gem 'sass-rails'
+gem 'uglifier'
 gem 'jquery-rails'
-
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
-
-# Use debugger
-gem 'debugger', group: [:development, :test]
-
-# use Bootstrap
 gem 'bootstrap-sass'
-group :development do
-  gem 'rails_layout'
-end
 gem 'select2-rails'
 gem 'bootstrap_form'
 
-# authentication
-gem 'devise'
-
-# scheduling
-gem 'rufus-scheduler'
-
-# redirect test email
-gem 'sanitize_email'
-
+group :development do
+  gem 'sanitize_email'
+end
