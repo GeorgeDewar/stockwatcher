@@ -34,7 +34,7 @@ stocks = Stock.create([
   {code: 'SKT', name: 'Sky Network Television Limited'},
   {code: 'STU', name: 'Steel & Tube Holdings Ltd.'},
   {code: 'SUM', name: 'SUMMERSET GROUP HOLDINGS LIMITE'},
-  {code: 'TEL', name: 'Telecom Corporation of New Zealand Ltd'},
+  {code: 'SPK', name: 'Spark New Zealand Ltd'},
   {code: 'TME', name: 'TRADE ME GROUP LTD NPV'},
   {code: 'TPW', name: 'TrustPower Limited'},
   {code: 'TWR', name: 'Tower Limited'},
