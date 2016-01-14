@@ -78,13 +78,12 @@ Stockwatcher::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'https://stockwatcher.co.nz' }
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
+    address:              'email-smtp.us-west-2.amazonaws.com',
     port:                 587,
-    domain:               'stockwatcher.co.nz',
-    user_name:            'support@stockwatcher.co.nz',
-    password:             '<REDACTED>',
+    user_name:            ENV["SMTP_USERNAME"],
+    password:             ENV["SMTP_PASSWORD"],
     authentication:       'plain',
     enable_starttls_auto: true
   }
