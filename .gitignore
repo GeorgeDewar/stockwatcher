@@ -35,6 +35,7 @@ config/initializers/secret_token.rb
 # Idea
 /out
 .idea
+*.iml
 
 # DB Dump
 stockwatcher-dump.sql
