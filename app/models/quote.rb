@@ -23,9 +23,7 @@ class Quote < ActiveRecord::Base
       code = quote[0].split('.')[0] # Remove suffix, e.g. 'XRO.NZ' => 'XRO'
       price = quote[1]
       last_trade_time = DateTime.strptime("#{quote[3]} #{quote[2]}", '%m/%d/%Y %H:%M%P')
-      last_trade_time = ActiveSupport::TimeZone['America/New_York'].local_to_utc(last_trade_time).in_time_zone('Auckland')
-      # correct bug in Yahoo Finance API where after 1pm, the time is given as a day in the future
-      last_trade_time = last_trade_time - 1.days if last_trade_time.hour >= 13
+      last_trade_time = ActiveSupport::TimeZone['Auckland'].local_to_utc(last_trade_time)
       prev_close = quote[4]
       Quote.new(:stock => Stock.find_by_code(code), :price => price,
                 :prev_close => prev_close, :last_trade_time => last_trade_time).save
