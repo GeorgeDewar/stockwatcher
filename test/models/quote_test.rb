@@ -19,13 +19,4 @@ class QuoteTest < ActiveSupport::TestCase
     assert alerts.first.watch == watches(:three)
   end
 
-  # due to bug in Yahoo Finance API...
-  test "should give correct time before and after 8pm" do
-    Quote.update_price CSV.parse('"XRO.NZ",44.550,"8:27pm","3/21/2014",44.500')[0]
-    assert_equal "2014-03-21 13:27:00 +1300".to_datetime, Quote.last.last_trade_time
-
-    Quote.update_price CSV.parse('"XRO.NZ",44.600,"7:46pm","3/20/2014",44.500')[0]
-    assert_equal "2014-03-21 12:46:00 +1300".to_datetime, Quote.last.last_trade_time
-  end
-
 end

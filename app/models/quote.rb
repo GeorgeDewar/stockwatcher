@@ -56,13 +56,14 @@ class Quote < ActiveRecord::Base
       eos
 
       if daily_diff.percent_change.abs > watch.threshold then
-        if Alert.where("watch_id = ? and date(created_at) = date(datetime(), 'localtime')", watch.id).exists? then
-          puts 'Threshold exceeded; not sending alert as alert already sent today'
-        elsif quote.last_trade_time.to_date != Date.today
-          puts 'Threshold exceeded; not sending alert as last trade was not today'
+        # Cheap hack - the stock market is never open for more than 16 hours
+        if Alert.where("watch_id = ? and created_at > current_timestamp - interval '16 hours'", watch.id).exists? then
+          puts 'Threshold exceeded; not sending alert as alert already sent within 16 hours'
+        elsif quote.last_trade_time + 1.hours < Time.now
+          puts 'Threshold exceeded; not sending alert as over one hour has passed since the stock was traded'
         else
           puts "Threshold exceeded; sending alert\n"
-          if AlertMailer.stock_alert(watch, daily_diff).deliver then
+          if AlertMailer.stock_alert(watch, daily_diff).deliver_now then
             Alert.new(:watch => watch).save
           end
         end
